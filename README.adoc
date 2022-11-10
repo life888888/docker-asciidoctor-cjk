@@ -1,0 +1,160 @@
+= docker-asciidoctor-cjk
+life888888
+:experimental:
+ifdef::env-github[]
+:toc:
+:toc-placement: preamble
+endif::[]
+ifndef::env-github[]
+:toc:
+:toc-placement: left
+endif::[]
+:imagesdir: images
+:author: life888888
+:project-name: docker-asciidoctor-cjk
+:project-version: 0.1.0
+:project-repo-url: https://github.com/{author}/{project-name}
+:download-root: {project-repo-url}/releases/download/v{project-version}
+
+
+== Overview
+
+* Add Noto CJK fonts and themes directory to docker container.
+* Add and use common user: demo , I don't like use root as primary user.
+
+== How to contribute / do it yourself?
+
+=== Requirements
+
+You need the following tools:
+
+* A bash compliant command line
+* Docker installed and in your path
+
+== Download Source Code
+
+Please download source code: {project-repo-url}/archive/refs/heads/main.zip
+
+Unzip file.
+
+=== How to build ?
+
+JUST SELECT ONE FONT LANGUAGE CODE
+
+sc (Simplified Chinese):: run command: `./build-docker-asciidoctor-cjk.sh sc`
+
+tc (Traditional Chinese):: run command: `./build-docker-asciidoctor-cjk.sh tc`
+
+hk (Hong Kong):: run command: `./build-docker-asciidoctor-cjk.sh hk`
+
+jp (Japanese):: run command: `./build-docker-asciidoctor-cjk.sh jp`
+
+kr (Korean):: run command: `./build-docker-asciidoctor-cjk.sh kr`
+
+
+[source,bash]
+----
+$ docker image ls
+docker-asciidoctor-cjk                 latest    24394fa1e002   3 hours ago     1.19GB
+docker-asciidoctor-cjk-tc              latest    24394fa1e002   3 hours ago     1.19GB
+life888888/docker-asciidoctor-cjk-tc   latest    24394fa1e002   3 hours ago     1.19GB
+life888888/docker-asciidoctor-cjk-tc   0.0.1     24394fa1e002   3 hours ago     1.19GB
+----
+
+I use tag name `docker-asciidoctor-cjk` to point to `docker-asciidoctor-cjk-tc`
+
+docker-asciidoctor-cjk -> docker-asciidoctor-cjk-**tc** -> life888888/docker-asciidoctor-cjk-**tc** -> life888888/docker-asciidoctor-cjk-**tc**:0.0.1
+
+
+`docker-asciidoctor-cjk` like a alias name, it will point to your language, like `docker-asciidoctor-cjk-sc` or `docker-asciidoctor-cjk-jp`.
+
+== How to use it
+
+Just run:
+
+[source,bash]
+----
+docker run -it -v `pwd`:/documents/ docker-asciidoctor-cjk
+----
+
+Create CJK PDF:
+
+[source,bash]
+----
+asciidoctor-pdf \
+  -r asciidoctor-diagram \
+  -r asciidoctor-mathematical \
+  -a scripts=cjk \
+  -a pdf-themesdir=/home/demo/downloaded-resources/themes \
+  -a pdf-fontsdir="/home/demo/downloaded-resources/fonts;GEM_FONTS_DIR" \
+  -a pdf-theme=default-ext-notosans-cjk-tc \
+  README-zh_TW.adoc
+----
+
+[IMPORTANT]
+====
+If you select language code is `tc`.
+
+You can set `pdf-theme=default-ext-notosans-cjk-tc`
+
+Theme Name List:
+
+* default-ext-notosans-cjk-tc
+* default-ext-notosansmono-cjk-tc
+* default-ext-notoserif-cjk-tc
+* default-notosans-cjk-tc
+* default-notosansmono-cjk-tc
+* default-notoserif-cjk-tc
+* notosans-cjk-tc
+* notosansmono-cjk-tc
+* notoserif-cjk-tc
+
+Please change `tc` to your language code.
+====
+
+Other usage is same as https://github.com/asciidoctor/docker-asciidoctor/blob/main/README.adoc#how-to-use-it
+
+== Add File Tree
+
+* -a pdf-themesdir=/home/demo/downloaded-resources/themes
+* -a pdf-fontsdir="/home/demo/downloaded-resources/fonts;GEM_FONTS_DIR"
+* -a pdf-theme=default-ext-notosans-cjk-tc
+
+[source,bash]
+----
+/home/demo
+└── downloaded-resources
+    ├── fonts
+    │   ├── notosans-cjk-tc-bold_italic.ttf
+    │   ├── notosans-cjk-tc-bold.ttf
+    │   ├── notosans-cjk-tc-italic.ttf
+    │   ├── notosans-cjk-tc-normal.ttf
+    │   ├── notosansmono-cjk-tc-bold_italic.ttf
+    │   ├── notosansmono-cjk-tc-bold.ttf
+    │   ├── notosansmono-cjk-tc-italic.ttf
+    │   ├── notosansmono-cjk-tc-normal.ttf
+    │   ├── notoserif-cjk-tc-bold_italic.ttf
+    │   ├── notoserif-cjk-tc-bold.ttf
+    │   ├── notoserif-cjk-tc-italic.ttf
+    │   └── notoserif-cjk-tc-normal.ttf
+    └── themes
+        ├── default-ext-notosans-cjk-tc-theme.yml
+        ├── default-ext-notosansmono-cjk-tc-theme.yml
+        ├── default-ext-notoserif-cjk-tc-theme.yml
+        ├── default-notosans-cjk-tc-theme.yml
+        ├── default-notosansmono-cjk-tc-theme.yml
+        ├── default-notoserif-cjk-tc-theme.yml
+        ├── notosans-cjk-tc-theme.yml
+        ├── notosansmono-cjk-tc-theme.yml
+        └── notoserif-cjk-tc-theme.yml
+----
+
+
+
+== License
+MIT License Copyright (c) 2022 life888888
+
+=== Third Party License
+docker-asciidoctor - MIT License
+
+asciidoctor-pdf-cjk-ext - MIT License
