@@ -22,51 +22,23 @@ endif::[]
 * Add Noto CJK fonts and themes directory to docker container.
 * Add and use common user: demo , I don't like use root as primary user.
 
-== How to contribute / do it yourself?
+=== Language Code
 
-=== Requirements
+* sc (Simplified Chinese):: run command: `./build-docker-asciidoctor-cjk.sh sc`
+* tc (Traditional Chinese):: run command: `./build-docker-asciidoctor-cjk.sh tc`
+* hk (Hong Kong):: run command: `./build-docker-asciidoctor-cjk.sh hk`
+* jp (Japanese):: run command: `./build-docker-asciidoctor-cjk.sh jp`
+* kr (Korean):: run command: `./build-docker-asciidoctor-cjk.sh kr`
 
-You need the following tools:
+== How to pull it
 
-* A bash compliant command line
-* Docker installed and in your path
-
-== Download Source Code
-
-Please download source code: {project-repo-url}/archive/refs/heads/main.zip
-
-Unzip file.
-
-=== How to build ?
-
-JUST SELECT ONE FONT LANGUAGE CODE
-
-sc (Simplified Chinese):: run command: `./build-docker-asciidoctor-cjk.sh sc`
-
-tc (Traditional Chinese):: run command: `./build-docker-asciidoctor-cjk.sh tc`
-
-hk (Hong Kong):: run command: `./build-docker-asciidoctor-cjk.sh hk`
-
-jp (Japanese):: run command: `./build-docker-asciidoctor-cjk.sh jp`
-
-kr (Korean):: run command: `./build-docker-asciidoctor-cjk.sh kr`
-
+If you select language code is `tc`.
 
 [source,bash]
 ----
-$ docker image ls
-docker-asciidoctor-cjk                 latest    24394fa1e002   3 hours ago     1.19GB
-docker-asciidoctor-cjk-tc              latest    24394fa1e002   3 hours ago     1.19GB
-life888888/docker-asciidoctor-cjk-tc   latest    24394fa1e002   3 hours ago     1.19GB
-life888888/docker-asciidoctor-cjk-tc   0.0.1     24394fa1e002   3 hours ago     1.19GB
+docker pull ghcr.io/life888888/docker-asciidoctor-cjk/docker-asciidoctor-cjk-tc
+docker tag ghcr.io/life888888/docker-asciidoctor-cjk/docker-asciidoctor-cjk-tc docker-asciidoctor-cjk
 ----
-
-I use tag name `docker-asciidoctor-cjk` to point to `docker-asciidoctor-cjk-tc`
-
-docker-asciidoctor-cjk -> docker-asciidoctor-cjk-**tc** -> life888888/docker-asciidoctor-cjk-**tc** -> life888888/docker-asciidoctor-cjk-**tc**:0.0.1
-
-
-`docker-asciidoctor-cjk` like a alias name, it will point to your language, like `docker-asciidoctor-cjk-sc` or `docker-asciidoctor-cjk-jp`.
 
 == How to use it
 
@@ -149,7 +121,51 @@ Other usage is same as https://github.com/asciidoctor/docker-asciidoctor/blob/ma
         └── notoserif-cjk-tc-theme.yml
 ----
 
+== How to contribute / do it yourself?
 
+=== Requirements
+
+You need the following tools:
+
+* A bash compliant command line
+* Docker installed and in your path
+
+== Download Source Code
+
+Please download source code: {project-repo-url}/archive/refs/heads/main.zip
+
+Unzip file.
+
+=== How to build ?
+
+JUST SELECT ONE FONT LANGUAGE CODE
+
+sc (Simplified Chinese):: run command: `./build-docker-asciidoctor-cjk.sh sc`
+
+tc (Traditional Chinese):: run command: `./build-docker-asciidoctor-cjk.sh tc`
+
+hk (Hong Kong):: run command: `./build-docker-asciidoctor-cjk.sh hk`
+
+jp (Japanese):: run command: `./build-docker-asciidoctor-cjk.sh jp`
+
+kr (Korean):: run command: `./build-docker-asciidoctor-cjk.sh kr`
+
+
+[source,bash]
+----
+$ docker image ls
+docker-asciidoctor-cjk                 latest    24394fa1e002   3 hours ago     1.19GB
+docker-asciidoctor-cjk-tc              latest    24394fa1e002   3 hours ago     1.19GB
+life888888/docker-asciidoctor-cjk-tc   latest    24394fa1e002   3 hours ago     1.19GB
+life888888/docker-asciidoctor-cjk-tc   0.0.1     24394fa1e002   3 hours ago     1.19GB
+----
+
+I use tag name `docker-asciidoctor-cjk` to point to `docker-asciidoctor-cjk-tc`
+
+docker-asciidoctor-cjk -> docker-asciidoctor-cjk-**tc** -> life888888/docker-asciidoctor-cjk-**tc** -> life888888/docker-asciidoctor-cjk-**tc**:0.0.1
+
+
+`docker-asciidoctor-cjk` like a alias name, it will point to your language, like `docker-asciidoctor-cjk-sc` or `docker-asciidoctor-cjk-jp`.
 
 == License
 MIT License Copyright (c) 2022 life888888
