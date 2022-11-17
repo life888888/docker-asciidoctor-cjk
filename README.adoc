@@ -24,11 +24,11 @@ endif::[]
 
 === Language Code
 
-* sc (Simplified Chinese):: run command: `./build-docker-asciidoctor-cjk.sh sc`
-* tc (Traditional Chinese):: run command: `./build-docker-asciidoctor-cjk.sh tc`
-* hk (Hong Kong):: run command: `./build-docker-asciidoctor-cjk.sh hk`
-* jp (Japanese):: run command: `./build-docker-asciidoctor-cjk.sh jp`
-* kr (Korean):: run command: `./build-docker-asciidoctor-cjk.sh kr`
+* sc (Simplified Chinese)
+* tc (Traditional Chinese)
+* hk (Hong Kong)
+* jp (Japanese)
+* kr (Korean)
 
 == How to pull it
 
