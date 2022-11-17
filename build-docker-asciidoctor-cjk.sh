@@ -19,11 +19,17 @@ if [ -z "$1" ]
     echo ""
   else
     export FLANG=$1
-    docker build --build-arg FONTLANG=${FLANG} -t ${CREATOR}/docker-asciidoctor-cjk-${FLANG}:${VERSION} .
-    docker tag ${CREATOR}/docker-asciidoctor-cjk-${FLANG}:${VERSION} ${CREATOR}/docker-asciidoctor-cjk-${FLANG}:latest
-    docker tag ${CREATOR}/docker-asciidoctor-cjk-${FLANG}:latest docker-asciidoctor-cjk-${FLANG}:latest
+    docker build  \
+       --label "org.opencontainers.image.source=https://github.com/life888888/docker-asciidoctor-cjk" \
+       --label "org.opencontainers.image.description=docker-asciidoctor-cjk-${FLANG}" \
+       --label "org.opencontainers.image.licenses=MIT" \
+       --build-arg FONTLANG=${FLANG} \
+       -t docker-asciidoctor-cjk-${FLANG}:${VERSION} .
+       
+    docker tag docker-asciidoctor-cjk-${FLANG}:${VERSION} docker-asciidoctor-cjk-${FLANG}:latest
+
     # ADD Alias Name docker-asciidoctor-cjk
-    docker tag docker-asciidoctor-cjk-${FLANG}:latest docker-asciidoctor-cjk:latest
+    # docker tag docker-asciidoctor-cjk-${FLANG}:latest docker-asciidoctor-cjk:latest
     echo "DONE!"
 fi
 
